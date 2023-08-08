@@ -1,49 +1,42 @@
-#include "lists.h"
-#include <stddef.h>
 #include <stdlib.h>
-
+#include <stdio.h>
+#include "lists.h"
 /**
- * insert_node - function that inserts a number to a singly linked list.
- * @head: pointer to pointer to head of the list.
- * @number: value of the node to insert.
- *
- * Return: the address of the new node, or NULL if it failed.
+ * insert_node - Insert node in order mode to linkedlist
+ * @head: head
+ * @number: num to be added
+ * Return: the address of new node
  */
-
 listint_t *insert_node(listint_t **head, int number)
 {
-	listint_t *new_node, *traverse;
-	unsigned int idx = 0, i = 0;
-	/* if there is no list return null */
-	if (head == NULL)
+	listint_t *new = malloc(sizeof(listint_t));
+	listint_t *actual = *head;
+
+	if (!new)
 		return (NULL);
-	/* create the new node */
-	new_node = malloc(sizeof(listint_t));
-	if (new_node == NULL)
-		return (NULL);
-	/* access the n field of the new_node and initialize it as n */
-	new_node->n = number;
-	/* check if idx = 0 */
-	if (idx == 0)
+
+	new->n = number;
+
+	if (*head == NULL || (*head)->n > number)
 	{
-		/* access the next field of new_node and assign it as first node */
-		new_node->next = *head;
-		*head = new_node;
-		return (new_node);
-	}
-	/* make traverse be the value at head */
-	traverse = *head;
-	while (i != idx - 1 && traverse != NULL)
-	{
-		traverse = traverse->next;
-		i++;
+		new->next = *head;
+		*head = new;
+		return (new);
 	}
 
-	if (i == idx - 1 && traverse != NULL)
+	while (actual->next)
 	{
-		new_node->next = traverse->next;
-		traverse->next = new_node;
-		return (new_node);
+		if ((actual->next)->n >= number)
+		{
+			new->next = actual->next;
+			actual->next = new;
+			return (new);
+		}
+		actual = actual->next;
 	}
-	return (NULL);
+
+	new->next = NULL;
+	actual->next = new;
+
+	return (new);
 }
