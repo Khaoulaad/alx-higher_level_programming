@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""script for posting data to star wars api
+"""
+script for posting data to star wars api
 """
 if __name__ == "__main__":
     import requests
