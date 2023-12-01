@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""script for testing POST requests so servers
+"""
+post request to server
 """
 if __name__ == "__main__":
     import urllib.request
