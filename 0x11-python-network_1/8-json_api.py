@@ -10,13 +10,13 @@ if __name__ == "__main__":
     else:
         q = ""
     query = {'q': q}
-    response = requests.post(url, data=query)
-    if response.status_code != requests.codes.ok or len(response.text) <= 0:
+    resp = requests.post(url, data=query)
+    if resp.status_code != requests.codes.ok or len(resp.text) <= 0:
         print('No result')
         sys.exit()
     else:
         try:
-            my_obj = response.json()
+            my_obj = resp.json()
             if len(my_obj) == 0:
                 print('No result')
                 sys.exit()
