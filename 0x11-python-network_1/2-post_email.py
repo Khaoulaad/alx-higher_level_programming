@@ -24,4 +24,3 @@ if __name__ == "__main__":
         # often have "side-effects".
         response_text = response.read().decode("utf-8")
         print(response_text)
-
