@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Takes in a URL, sends a request to the URL 
+Takes in a URL, sends a request to the URL
 print: Error code: followed by the HTTP status code.
 """
 import urllib.request
